@@ -43,16 +43,28 @@ function lose(userChoice,computerChoice) {
     computerScore++;
     computerScore_span.innerHTML=computerScore;
     result_p.innerHTML = `${computerChoice} beats ${userChoice}. You lose!`;
+    document.getElementById(getUserChoice(userChoice)).classList.add('red-glow');
+    setTimeout(function() { document.getElementById(getUserChoice(userChoice)).classList.remove('red-glow')}, 300)
 }
 
 function draw(userChoice,computerChoice) {
     result_p.innerHTML = `${computerChoice} is equals to ${userChoice}. It's a draw!`;
+    document.getElementById(getUserChoice(userChoice)).classList.add('gray-glow');
+    setTimeout(function() { document.getElementById(getUserChoice(userChoice)).classList.remove('gray-glow')}, 300)
 }
 
 function win(userChoice,computerChoice) {
     userScore++;
     userScore_span.innerHTML=userScore;
     result_p.innerHTML =  `${userChoice} beats ${computerChoice}. You won!`;
+    document.getElementById(getUserChoice(userChoice)).classList.add('green-glow');
+    setTimeout(function() { document.getElementById(getUserChoice(userChoice)).classList.remove('green-glow')}, 300)
+}
+
+function getUserChoice(choice){
+    if(choice=="Rock") return "r";
+    if(choice == "Paper") return "p";
+    return "s";
 }
 
 function convertToWord(choice){
